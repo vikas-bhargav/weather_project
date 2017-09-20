@@ -1,0 +1,15 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+</head>
+<body>
+    <h1> Weather App</h1>
+    <h2>Add New Station</h2>
+    <form action="{% url 'addstation' %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Add Station">
+    </form>
+</body>
+</html>

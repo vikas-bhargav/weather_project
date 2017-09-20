@@ -1,0 +1,36 @@
+{% load staticfiles %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+</head>
+<body>
+    <h1> Weather App</h1>
+    <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+        {{ form}}
+
+        <input type="submit" value="Get Data">
+    </form>
+    <form action="{% url 'addstation' %}">
+        {% csrf_token %}
+        <input type="submit" value="Add Station">
+    </form>
+    <br>
+    {% if img %}
+        <img  src="{% static 'weatherapp/figure.png' %}" alt="test" />
+    {% endif%}
+</body>
+<script>
+    $( '#id_start_date' ).datepicker({
+        dateFormat: 'yy-mm-dd'
+    });
+    $( '#id_end_date' ).datepicker({
+        dateFormat: 'yy-mm-dd'
+    });
+</script>
+</html>
